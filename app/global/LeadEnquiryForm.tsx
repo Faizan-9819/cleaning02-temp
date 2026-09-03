@@ -21,7 +21,8 @@ type BookableService = {
 
 const TENANT_SLUG = "plumber1";
 const SITE_SLUG = "plumber1";
-const API_BASE = `https://api.getgrowthrocket.com/api/v1/public/tenants/${TENANT_SLUG}/sites/${SITE_SLUG}`;
+// const API_BASE = `https://api.getgrowthrocket.com/api/v1/public/tenants/${TENANT_SLUG}/sites/${SITE_SLUG}`;
+const API_BASE = `https://api.getgrowthrocket.com/api/v1/public`;
 
 const REGEX = {
   phone: /^\+?[0-9\s\-()]{7,20}$/,
