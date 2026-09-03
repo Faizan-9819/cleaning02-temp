@@ -65,7 +65,7 @@ type Step = "service" | "slot" | "details" | "success";
 const API_ORIGIN = "https://api.getgrowthrocket.com";
 const TENANT_SLUG = "plumber1";
 const SITE_SLUG = "plumber1";
-// const API_BASE = `${API_ORIGIN}/api/v1/public/tenants/${TENANT_SLUG}/sites/${SITE_SLUG}`;
+// const API_BASE = `${API_OR IGIN}/api/v1/public/tenants/${TENANT_SLUG}/sites/${SITE_SLUG}`;
 const API_BASE = `${API_ORIGIN}/api/v1/public`;
 
 function toLocalDateKey(d: Date): string {
@@ -74,6 +74,7 @@ function toLocalDateKey(d: Date): string {
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${m}-${day}`;
 }
+// 
 
 function addDays(d: Date, days: number): Date {
   const out = new Date(d);
