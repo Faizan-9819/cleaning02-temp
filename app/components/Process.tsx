@@ -94,9 +94,9 @@ export default function Process() {
         {/* Mobile carousel */}
         <div className="mt-14 sm:hidden">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="-ml-4 flex">
+            <div className="flex gap-4">
               {STEPS.map((step) => (
-                <div key={step.n} className="min-w-0 flex-[0_0_88%] pl-4">
+                <div key={step.n} className="min-w-0 flex-[0_0_100%]">
                   <StepCard step={step} />
                 </div>
               ))}

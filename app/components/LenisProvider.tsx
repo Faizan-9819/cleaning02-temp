@@ -3,21 +3,34 @@
 import { ReactLenis, useLenis } from "lenis/react";
 import type { ReactNode } from "react";
 
-// Windows' "Roll the mouse wheel to scroll: One screen at a time" setting makes
-// physical mouse wheels report deltaMode 2 (DOM_DELTA_PAGE), which Lenis expands
-// to a full viewport height per notch — a single click then reads as an instant
-// jump instead of a smooth glide. Trackpads never use this mode. Clamp the delta
-// so no single wheel input can produce an oversized, non-smooth-looking jump.
-const MAX_WHEEL_DELTA = 150;
+// A physical mouse wheel fires one large, discrete delta per notch (often
+// 100+ px), while a touchpad fires a dense stream of small deltas. Lenis's
+// lerp damping moves a fixed *percentage* of the remaining distance per
+// frame, so a big per-notch delta still produces a large, visible first-frame
+// jump even though the math is "smooth" — that jump is what reads as
+// un-smoothed scrolling. Clamping every wheel delta to a small max forces
+// each notch to glide in over several frames instead of snapping ahead, for
+// both mouse and touchpad alike.
+const MAX_WHEEL_DELTA = 60;
 
 export default function LenisProvider({ children }: { children: ReactNode }) {
   return (
     <ReactLenis
       root
       options={{
-        duration: 1.2,
-        easing: (t: number) => 1 - Math.pow(1 - t, 4),
+        lerp: 0.085,
         smoothWheel: true,
+        // Lenis silently forces wheel scroll to "immediate" (no smoothing at
+        // all) whenever the OS reports prefers-reduced-motion: reduce — a
+        // setting many Windows users have on without realizing it (Settings >
+        // Accessibility > Visual effects > Animation effects). That fully
+        // explains "smooth on touchpad, instant on mouse wheel" with zero
+        // config change needed elsewhere: touchpads still *look* smooth when
+        // un-smoothed because the hardware sends a continuous stream of tiny
+        // deltas, while a mouse notch un-smoothed is one big instant jump.
+        // Smooth scroll is core interaction behavior for this site, not a
+        // decorative animation, so we opt out of that gate.
+        respectReducedMotion: false,
         syncTouch: false,
         wheelMultiplier: 1,
         touchMultiplier: 2,

@@ -126,9 +126,9 @@ export default function WhyUs() {
         {/* Mobile carousel */}
         <div className="mt-13 sm:hidden">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="-ml-4 flex">
+            <div className="flex gap-4">
               {WHY.map((item) => (
-                <div key={item.n} className="min-w-0 flex-[0_0_88%] pl-4">
+                <div key={item.n} className="min-w-0 flex-[0_0_100%]">
                   <WhyCard item={item} />
                 </div>
               ))}

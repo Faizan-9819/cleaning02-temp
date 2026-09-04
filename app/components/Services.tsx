@@ -194,12 +194,9 @@ export default function Services() {
         </div>
 
         <div className="mt-8 md:mt-13 overflow-hidden lg:hidden" ref={emblaRef}>
-          <div className="flex">
+          <div className="flex gap-4">
             {SERVICES.map((service) => (
-              <div
-                key={service.n}
-                className="min-w-0 flex-[0_0_100%] pr-4 sm:flex-[0_0_85%]"
-              >
+              <div key={service.n} className="min-w-0 flex-[0_0_100%]">
                 <ServiceCard service={service} />
               </div>
             ))}
