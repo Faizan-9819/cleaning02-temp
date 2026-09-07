@@ -10,6 +10,7 @@ import {
   type WheelEvent,
 } from "react";
 import type { ReactNode } from "react";
+import { ReactLenis } from "lenis/react";
 import { useLenisControl } from "../components/LenisProvider";
 
 interface BookingFormProps {
@@ -593,10 +594,16 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                 )}
               </div>
 
-              {/* Body — make content area scrollable when content is long */}
-              <div
-                className="relative px-6 lg:px-8 py-6 flex flex-col flex-1 min-h-0 max-h-[calc(100vh-64px)] overflow-y-auto lg:max-h-none lg:overflow-y-visible touch-pan-y"
+              {/* Body — make content area scrollable when content is long, at every breakpoint */}
+              <ReactLenis
+                className="booking-body-scroll relative px-6 lg:px-8 py-6 flex flex-col flex-1 min-h-0 max-h-[calc(100vh-64px)] overflow-y-auto touch-pan-y"
                 data-lenis-prevent
+                options={{
+                  lerp: 0.1,
+                  smoothWheel: true,
+                  syncTouch: false,
+                  respectReducedMotion: false,
+                }}
               >
                 <AnimatePresence mode="wait" custom={direction}>
                   {step === "service" && (
@@ -666,7 +673,7 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                     </Slide>
                   )}
                 </AnimatePresence>
-              </div>
+              </ReactLenis>
             </motion.div>
           </div>
 
@@ -706,6 +713,23 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
             .services-scroll {
               scrollbar-width: thin;
               scrollbar-color: var(--accent) var(--soft);
+            }
+            .booking-body-scroll::-webkit-scrollbar {
+              width: 6px;
+            }
+            .booking-body-scroll::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            .booking-body-scroll::-webkit-scrollbar-thumb {
+              background: var(--accent);
+              border-radius: 999px;
+            }
+            .booking-body-scroll::-webkit-scrollbar-thumb:hover {
+              background: var(--accent-2);
+            }
+            .booking-body-scroll {
+              scrollbar-width: thin;
+              scrollbar-color: var(--accent) transparent;
             }
           `}</style>
         </>
