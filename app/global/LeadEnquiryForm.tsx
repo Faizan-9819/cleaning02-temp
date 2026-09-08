@@ -139,7 +139,7 @@ export default function LeadEnquiryForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name,
-          email: formData.email,
+          email: formData.email, 
           phone: formData.phone,
           serviceArea: formData.serviceArea,
           serviceId: formData.service ? Number(formData.service) : undefined,

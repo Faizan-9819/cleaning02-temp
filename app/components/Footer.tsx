@@ -22,7 +22,7 @@ const LEGAL_LINKS = ["Privacy Policy", "Cookie Policy", "Terms & Conditions"];
 
 export default function Footer() {
   return (
-    <footer className="bg-brand px-8 pt-[50px] text-muted-light sm:pt-[80px]">
+    <footer className="bg-brand pt-[50px] text-muted-light sm:pt-[80px]">
       <div className="fix">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.4fr]">
           <div>
@@ -40,7 +40,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-5.5 max-w-75 text-[14.5px] leading-[1.7] text-muted-light">
-              Reliable, professional commercial cleaning for businesses, schools, facilities and holiday parks across the region.
+              Reliable, professional commercial cleaning for businesses,
+              schools, facilities and holiday parks across the region.
             </p>
             <div className="mt-6 flex gap-2.75">
               <a
@@ -48,7 +49,12 @@ export default function Footer() {
                 aria-label="Facebook"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/8 text-[#cfc8bc] no-underline transition-colors hover:bg-white/16"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M13.5 9H15V6.5h-1.5c-1.93 0-3 1.07-3 3V11H9v2.5h1.5V19H13v-5.5h1.7l.3-2.5h-2V9.5c0-.3.2-.5.5-.5Z" />
                 </svg>
               </a>
@@ -57,10 +63,23 @@ export default function Footer() {
                 aria-label="Instagram"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/8 text-[#cfc8bc] no-underline transition-colors hover:bg-white/16"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <rect x="2" y="2" width="20" height="20" rx="5" />
                   <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
                 </svg>
               </a>
               <a
@@ -68,7 +87,12 @@ export default function Footer() {
                 aria-label="LinkedIn"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/8 text-[#cfc8bc] no-underline transition-colors hover:bg-white/16"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M6.94 6.5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.4 8.9h3.1V20H3.4V8.9Zm5.06 0h2.97v1.52h.04c.41-.78 1.42-1.6 2.93-1.6 3.13 0 3.7 2.06 3.7 4.74V20h-3.1v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.59V20H8.46V8.9Z" />
                 </svg>
               </a>
