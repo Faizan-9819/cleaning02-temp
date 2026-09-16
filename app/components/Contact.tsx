@@ -1,16 +1,21 @@
+"use client";
+
 import LeadEnquiryForm from "@/app/global/LeadEnquiryForm";
+import { useLanguage } from "@/app/i18n/LanguageProvider";
 
 export default function Contact() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="bg-cream-alt py-[50px] sm:py-[80px]">
       <div className="fix grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="rounded-[28px] border border-brand/7 bg-white p-8 sm:p-12">
           <p className="inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.18em] text-muted-light uppercase">
             <span className="inline-block h-px w-7 bg-muted-light" />
-            Contact
+            {t({ en: "Contact", nl: "Contact" })}
           </p>
           <h2 className="mt-4.5 font-serif text-[clamp(30px,3.4vw,44px)] leading-[1.08] font-medium tracking-[-0.01em] text-brand">
-            Request your cleaning quote <span className="italic">today</span>
+            {t({ en: "Request your cleaning quote", nl: "Ontvang uw schoonmaakofferte" })}{" "}
+            <span className="italic">{t({ en: "today", nl: "vandaag" })}</span>
           </h2>
 
           <LeadEnquiryForm
@@ -23,10 +28,13 @@ export default function Contact() {
         <div className="flex flex-col gap-4">
           <div className="rounded-[28px] bg-brand p-10 text-white">
             <h3 className="font-serif text-[28px] font-semibold tracking-[-0.01em]">
-              Get in touch
+              {t({ en: "Get in touch", nl: "Neem contact op" })}
             </h3>
             <p className="mt-3 mb-7 text-[15px] leading-[1.65] text-muted-light">
-              Looking for a reliable cleaning partner? Contact our team and we&apos;ll help you find the right solution.
+              {t({
+                en: "Looking for a reliable cleaning partner? Contact our team and we'll help you find the right solution.",
+                nl: "Op zoek naar een betrouwbare schoonmaakpartner? Neem contact op met ons team en wij helpen u de juiste oplossing te vinden.",
+              })}
             </p>
 
             <div className="mb-6 flex items-start gap-3.5">
@@ -37,7 +45,7 @@ export default function Contact() {
               </span>
               <div>
                 <div className="text-xs font-semibold tracking-[0.1em] text-muted-light uppercase">
-                  Phone
+                  {t({ en: "Phone", nl: "Telefoon" })}
                 </div>
                 <a href="tel:+00000000000" className="text-base font-semibold text-white no-underline">
                   +00 000 000 000
@@ -54,7 +62,7 @@ export default function Contact() {
               </span>
               <div>
                 <div className="text-xs font-semibold tracking-[0.1em] text-muted-light uppercase">
-                  Email
+                  {t({ en: "Email", nl: "E-mail" })}
                 </div>
                 <a href="mailto:hello@example.com" className="text-base font-semibold text-white no-underline">
                   hello@example.com
@@ -71,7 +79,7 @@ export default function Contact() {
               </span>
               <div>
                 <div className="text-xs font-semibold tracking-[0.1em] text-muted-light uppercase">
-                  Address
+                  {t({ en: "Address", nl: "Adres" })}
                 </div>
                 <div className="text-base leading-[1.5] font-semibold text-white">
                   123 Example Street
@@ -91,10 +99,13 @@ export default function Contact() {
             </span>
             <div>
               <div className="text-[15.5px] font-semibold text-brand">
-                Working hours
+                {t({ en: "Working hours", nl: "Openingstijden" })}
               </div>
               <div className="mt-0.75 text-sm text-muted">
-                Mon–Sat: 9:00 – 17:00 · Sun closed
+                {t({
+                  en: "Mon–Sat: 9:00 – 17:00 · Sun closed",
+                  nl: "Ma–Za: 9:00 – 17:00 · Zo gesloten",
+                })}
               </div>
             </div>
           </div>

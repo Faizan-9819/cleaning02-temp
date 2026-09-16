@@ -2,47 +2,73 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { useLanguage } from "@/app/i18n/LanguageProvider";
+import type { Translation } from "@/app/i18n/config";
 
-const WHY = [
+const WHY: { n: string; title: Translation; desc: Translation; featured: boolean }[] = [
   {
     n: "01",
-    title: "Reliable & Professional Team",
-    desc: "Trained, vetted cleaners who arrive on time and deliver consistent results, every visit.",
+    title: { en: "Reliable & Professional Team", nl: "Betrouwbaar & professioneel team" },
+    desc: {
+      en: "Trained, vetted cleaners who arrive on time and deliver consistent results, every visit.",
+      nl: "Getrainde, gescreende schoonmakers die op tijd arriveren en bij elk bezoek consistente resultaten leveren.",
+    },
     featured: true,
   },
   {
     n: "02",
-    title: "Flexible Cleaning Schedules",
-    desc: "Daytime, evening or weekend cleaning that fits around your operation — not the other way around.",
+    title: { en: "Flexible Cleaning Schedules", nl: "Flexibele schoonmaakschema's" },
+    desc: {
+      en: "Daytime, evening or weekend cleaning that fits around your operation — not the other way around.",
+      nl: "Schoonmaak overdag, 's avonds of in het weekend, afgestemd op uw bedrijfsvoering — niet andersom.",
+    },
     featured: false,
   },
   {
     n: "03",
-    title: "Tailored Service Plans",
-    desc: "Cleaning programmes built around your space, sector and standards. Never one-size-fits-all.",
+    title: { en: "Tailored Service Plans", nl: "Schoonmaakplannen op maat" },
+    desc: {
+      en: "Cleaning programmes built around your space, sector and standards. Never one-size-fits-all.",
+      nl: "Schoonmaakprogramma's afgestemd op uw ruimte, sector en normen. Nooit standaard.",
+    },
     featured: false,
   },
   {
     n: "04",
-    title: "Consistent Quality Standards",
-    desc: "Clear checklists and on-site supervision keep quality high across every location we maintain.",
+    title: { en: "Consistent Quality Standards", nl: "Consistente kwaliteitsnormen" },
+    desc: {
+      en: "Clear checklists and on-site supervision keep quality high across every location we maintain.",
+      nl: "Duidelijke checklists en toezicht ter plaatse houden de kwaliteit hoog op elke locatie die wij onderhouden.",
+    },
     featured: false,
   },
   {
     n: "05",
-    title: "Responsive Customer Support",
-    desc: "A direct line to our team and a quick response whenever your needs change.",
+    title: { en: "Responsive Customer Support", nl: "Snelle klantenondersteuning" },
+    desc: {
+      en: "A direct line to our team and a quick response whenever your needs change.",
+      nl: "Een directe lijn met ons team en een snelle reactie wanneer uw wensen veranderen.",
+    },
     featured: false,
   },
   {
     n: "06",
-    title: "Safe & Hygienic Environments",
-    desc: "The right products and methods to protect the health of everyone who uses your space.",
+    title: { en: "Safe & Hygienic Environments", nl: "Veilige & hygiënische omgevingen" },
+    desc: {
+      en: "The right products and methods to protect the health of everyone who uses your space.",
+      nl: "De juiste producten en methoden om de gezondheid van iedereen die uw ruimte gebruikt te beschermen.",
+    },
     featured: false,
   },
 ];
 
-function WhyCard({ item }: { item: (typeof WHY)[number] }) {
+function WhyCard({
+  item,
+  t,
+}: {
+  item: (typeof WHY)[number];
+  t: (entry: Translation) => string;
+}) {
   if (item.featured) {
     return (
       <div className="h-full rounded-3xl bg-brand p-9.5 text-white">
@@ -50,10 +76,10 @@ function WhyCard({ item }: { item: (typeof WHY)[number] }) {
           {item.n}
         </div>
         <h3 className="mt-3.5 font-serif text-[26px] font-semibold tracking-[-0.01em]">
-          {item.title}
+          {t(item.title)}
         </h3>
         <p className="mt-3 text-[15.5px] leading-[1.65] text-white/78">
-          {item.desc}
+          {t(item.desc)}
         </p>
       </div>
     );
@@ -65,16 +91,17 @@ function WhyCard({ item }: { item: (typeof WHY)[number] }) {
         {item.n}
       </div>
       <h3 className="mt-3.5 font-serif text-2xl font-semibold tracking-[-0.01em] text-brand">
-        {item.title}
+        {t(item.title)}
       </h3>
       <p className="mt-3 text-[15.5px] leading-[1.65] text-muted">
-        {item.desc}
+        {t(item.desc)}
       </p>
     </div>
   );
 }
 
 export default function WhyUs() {
+  const { t } = useLanguage();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: false,
@@ -108,18 +135,18 @@ export default function WhyUs() {
         <div className="max-w-[660px]">
           <p className="inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.18em] text-muted-light uppercase">
             <span className="inline-block h-px w-7 bg-muted-light" />
-            Why Choose Us
+            {t({ en: "Why Choose Us", nl: "Waarom kiezen voor ons" })}
           </p>
           <h2 className="mt-5 font-serif text-[clamp(34px,4vw,52px)] leading-[1.08] font-medium tracking-[-0.01em] text-brand">
-            Cleaning that goes beyond{" "}
-            <span className="italic">expectations</span>
+            {t({ en: "Cleaning that goes beyond", nl: "Schoonmaak die verder gaat dan" })}{" "}
+            <span className="italic">{t({ en: "expectations", nl: "verwachtingen" })}</span>
           </h2>
         </div>
 
         {/* Desktop / tablet grid */}
         <div className="mt-13 hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {WHY.map((item) => (
-            <WhyCard key={item.n} item={item} />
+            <WhyCard key={item.n} item={item} t={t} />
           ))}
         </div>
 
@@ -129,7 +156,7 @@ export default function WhyUs() {
             <div className="flex gap-4">
               {WHY.map((item) => (
                 <div key={item.n} className="min-w-0 flex-[0_0_100%]">
-                  <WhyCard item={item} />
+                  <WhyCard item={item} t={t} />
                 </div>
               ))}
             </div>
@@ -140,7 +167,7 @@ export default function WhyUs() {
               type="button"
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              aria-label="Previous"
+              aria-label={t({ en: "Previous", nl: "Vorige" })}
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand/20 bg-white text-ink transition-colors hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-brand/20 disabled:hover:bg-white disabled:hover:text-ink"
             >
               <svg
@@ -161,7 +188,7 @@ export default function WhyUs() {
               type="button"
               onClick={scrollNext}
               disabled={!canScrollNext}
-              aria-label="Next"
+              aria-label={t({ en: "Next", nl: "Volgende" })}
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand/20 bg-white text-ink transition-colors hover:border-brand hover:bg-brand hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-brand/20 disabled:hover:bg-white disabled:hover:text-ink"
             >
               <svg

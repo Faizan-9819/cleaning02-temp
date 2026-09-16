@@ -1,26 +1,33 @@
 "use client";
 
 import { openCookiePreferences } from "./CookieConsent";
+import { useLanguage } from "@/app/i18n/LanguageProvider";
+import type { Translation } from "@/app/i18n/config";
 
-const SERVICE_LINKS = [
-  "Office & Commercial",
-  "School Cleaning",
-  "Holiday Park Cleaning",
-  "Building Maintenance",
-  "Staffing Support",
+const SERVICE_LINKS: Translation[] = [
+  { en: "Office & Commercial", nl: "Kantoor & bedrijfsruimte" },
+  { en: "School Cleaning", nl: "Schoolreiniging" },
+  { en: "Holiday Park Cleaning", nl: "Schoonmaak vakantieparken" },
+  { en: "Building Maintenance", nl: "Gebouwonderhoud" },
+  { en: "Staffing Support", nl: "Personeelsondersteuning" },
 ];
 
-const COMPANY_LINKS = [
-  { label: "About Us", href: "#about" },
-  { label: "Service Areas", href: "#areas" },
-  { label: "Blog", href: "#journal" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#enquiry" },
+const COMPANY_LINKS: { label: Translation; href: string }[] = [
+  { label: { en: "About Us", nl: "Over ons" }, href: "#about" },
+  { label: { en: "Service Areas", nl: "Werkgebieden" }, href: "#areas" },
+  { label: { en: "Blog", nl: "Blog" }, href: "#journal" },
+  { label: { en: "FAQ", nl: "Veelgestelde vragen" }, href: "#faq" },
+  { label: { en: "Contact", nl: "Contact" }, href: "#enquiry" },
 ];
 
-const LEGAL_LINKS = ["Privacy Policy", "Cookie Policy", "Terms & Conditions"];
+const LEGAL_LINKS: Translation[] = [
+  { en: "Privacy Policy", nl: "Privacybeleid" },
+  { en: "Cookie Policy", nl: "Cookiebeleid" },
+  { en: "Terms & Conditions", nl: "Algemene voorwaarden" },
+];
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-brand pt-[50px] text-muted-light sm:pt-[80px]">
       <div className="fix">
@@ -40,8 +47,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-5.5 max-w-75 text-[14.5px] leading-[1.7] text-muted-light">
-              Reliable, professional commercial cleaning for businesses,
-              schools, facilities and holiday parks across the region.
+              {t({
+                en: "Reliable, professional commercial cleaning for businesses, schools, facilities and holiday parks across the region.",
+                nl: "Betrouwbare, professionele zakelijke schoonmaak voor bedrijven, scholen, faciliteiten en vakantieparken in de hele regio.",
+              })}
             </p>
             <div className="mt-6 flex gap-2.75">
               <a
@@ -101,16 +110,16 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-5 text-[13px] font-bold tracking-[0.12em] text-white uppercase">
-              Services
+              {t({ en: "Services", nl: "Diensten" })}
             </h4>
             <div className="flex flex-col gap-3.25">
               {SERVICE_LINKS.map((label) => (
                 <a
-                  key={label}
+                  key={label.en}
                   href="#services"
                   className="text-[14.5px] text-muted-light no-underline transition-colors hover:text-white"
                 >
-                  {label}
+                  {t(label)}
                 </a>
               ))}
             </div>
@@ -118,7 +127,7 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-5 text-[13px] font-bold tracking-[0.12em] text-white uppercase">
-              Company
+              {t({ en: "Company", nl: "Bedrijf" })}
             </h4>
             <div className="flex flex-col gap-3.25">
               {COMPANY_LINKS.map((link) => (
@@ -127,7 +136,7 @@ export default function Footer() {
                   href={link.href}
                   className="text-[14.5px] text-muted-light no-underline transition-colors hover:text-white"
                 >
-                  {link.label}
+                  {t(link.label)}
                 </a>
               ))}
             </div>
@@ -135,19 +144,22 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-5 text-[13px] font-bold tracking-[0.12em] text-white uppercase">
-              Newsletter
+              {t({ en: "Newsletter", nl: "Nieuwsbrief" })}
             </h4>
             <p className="mb-4 text-sm leading-[1.65] text-muted-light">
-              Cleaning tips and updates, occasionally — no spam.
+              {t({
+                en: "Cleaning tips and updates, occasionally — no spam.",
+                nl: "Af en toe schoonmaaktips en updates — geen spam.",
+              })}
             </p>
             <div className="flex gap-2 rounded-full bg-white/8 p-1.5">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={t({ en: "Your email address", nl: "Uw e-mailadres" })}
                 className="flex-1 bg-transparent px-3.5 py-2 font-sans text-sm text-white outline-none placeholder:text-muted-light"
               />
               <button className="rounded-full bg-white px-4.5 py-2.5 font-sans text-sm font-semibold text-brand transition-opacity hover:opacity-90">
-                Subscribe
+                {t({ en: "Subscribe", nl: "Aanmelden" })}
               </button>
             </div>
             <div className="mt-5.5 text-[13.5px] leading-[1.7] text-muted-light">
@@ -160,16 +172,19 @@ export default function Footer() {
 
         <div className="flex flex-wrap items-center justify-between gap-4.5 py-7">
           <div className="text-[13.5px] text-muted">
-            © 2026 Cleaning Co. All rights reserved.
+            {t({
+              en: "© 2026 Cleaning Co. All rights reserved.",
+              nl: "© 2026 Cleaning Co. Alle rechten voorbehouden.",
+            })}
           </div>
           <div className="flex flex-wrap items-center gap-6">
             {LEGAL_LINKS.map((label) => (
               <a
-                key={label}
+                key={label.en}
                 href="#home"
                 className="text-[13.5px] text-muted-light no-underline transition-colors hover:text-white"
               >
-                {label}
+                {t(label)}
               </a>
             ))}
             <button
@@ -177,7 +192,7 @@ export default function Footer() {
               onClick={openCookiePreferences}
               className="cursor-pointer text-[13.5px] text-muted-light transition-colors hover:text-white"
             >
-              Manage Cookies
+              {t({ en: "Manage Cookies", nl: "Cookies beheren" })}
             </button>
           </div>
         </div>

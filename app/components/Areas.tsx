@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/app/i18n/LanguageProvider";
+
 const PINS = [
   { name: "Westend", top: "24%", left: "24%" },
   { name: "Riverside", top: "34%", left: "44%" },
@@ -19,6 +23,7 @@ const AREAS = [
 ];
 
 export default function Areas() {
+  const { t } = useLanguage();
   return (
     <section id="areas" className="bg-cream-alt py-[50px] sm:py-[80px]">
       <div className="fix grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -76,15 +81,17 @@ export default function Areas() {
         <div>
           <p className="inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.18em] text-muted-light uppercase">
             <span className="inline-block h-px w-7 bg-muted-light" />
-            Service Areas
+            {t({ en: "Service Areas", nl: "Werkgebieden" })}
           </p>
           <h2 className="mt-5 font-serif text-[clamp(34px,4vw,52px)] leading-[1.08] font-medium tracking-[-0.01em] text-brand">
-            Cleaning coverage across <br />{" "}
-            <span className="italic">your region</span>
+            {t({ en: "Cleaning coverage across", nl: "Schoonmaakdekking in" })} <br />{" "}
+            <span className="italic">{t({ en: "your region", nl: "uw regio" })}</span>
           </h2>
           <p className="mt-5 max-w-[480px] text-[17px] leading-[1.7] text-muted">
-            Based in your city, we serve businesses, schools and facilities
-            throughout the wider region — reliable, on-site and on schedule.
+            {t({
+              en: "Based in your city, we serve businesses, schools and facilities throughout the wider region — reliable, on-site and on schedule.",
+              nl: "Gevestigd in uw stad bedienen wij bedrijven, scholen en faciliteiten in de wijdere regio — betrouwbaar, ter plaatse en op schema.",
+            })}
           </p>
           <div className="mt-7.5 flex flex-wrap gap-2.75">
             {AREAS.map((area) => (

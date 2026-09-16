@@ -28,10 +28,10 @@ function toEnPath(nlPath: string): string {
 
 const BTN = (active: boolean) =>
   clsx(
-    "px-[10px] py-[5px] rounded-[6px] font-sans font-semibold text-[12px] leading-none transition-colors",
+    "px-[11px] py-[6px] rounded-full font-sans font-semibold text-[12px] leading-none transition-colors",
     active
-      ? "bg-[var(--color-violet-42)] text-white cursor-default"
-      : "text-[var(--color-haiti)] hover:text-[var(--color-violet-42)] cursor-pointer"
+      ? "bg-brand text-white cursor-default"
+      : "text-muted hover:text-brand cursor-pointer"
   );
 
 export default function LanguageToggle({ className }: { className?: string }) {
@@ -50,7 +50,7 @@ export default function LanguageToggle({ className }: { className?: string }) {
       role="group"
       aria-label="Language"
       className={clsx(
-        "inline-flex items-center rounded-[8px] border border-black/10 bg-white p-[2px]",
+        "inline-flex items-center rounded-full border border-brand/[.12] bg-white p-[2px]",
         className
       )}
     >

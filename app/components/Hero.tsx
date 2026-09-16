@@ -1,4 +1,7 @@
+"use client";
+
 import { unsplash } from "@/app/lib/images";
+import { useLanguage } from "@/app/i18n/LanguageProvider";
 
 const COLLAGE_IMAGES = [
   { id: "1581578731548-c64695cc6952", alt: "Cleaning supplies", w: 222, h: 340 },
@@ -12,6 +15,7 @@ const COLLAGE_IMAGES = [
 ];
 
 export default function Hero() {
+  const { t } = useLanguage();
   const loop = [...COLLAGE_IMAGES, ...COLLAGE_IMAGES];
 
   return (
@@ -30,16 +34,25 @@ export default function Hero() {
               <path d="M20 6 9 17l-5-5" />
             </svg>
             <span className="text-[13px] font-medium text-muted">
-              Trusted by businesses across the region
+              {t({
+                en: "Trusted by businesses across the region",
+                nl: "Vertrouwd door bedrijven in de hele regio",
+              })}
             </span>
           </div>
 
           <h1 className="mt-6 text-balance font-serif text-[clamp(44px,5.4vw,74px)] leading-[1.02] font-medium tracking-[-0.015em] text-brand">
-            Professional cleaning services for <span className="italic">businesses</span>
+            {t({ en: "Professional cleaning services for", nl: "Professionele schoonmaakdiensten voor" })}{" "}
+            <span className="italic">
+              {t({ en: "businesses", nl: "bedrijven" })}
+            </span>
           </h1>
 
           <p className="mt-6 max-w-[520px] text-lg leading-[1.7] text-muted">
-            Reliable, flexible and professional cleaning for offices, schools, commercial facilities and holiday parks — delivered by a team you can count on.
+            {t({
+              en: "Reliable, flexible and professional cleaning for offices, schools, commercial facilities and holiday parks — delivered by a team you can count on.",
+              nl: "Betrouwbare, flexibele en professionele schoonmaak voor kantoren, scholen, bedrijfspanden en vakantieparken — geleverd door een team waarop u kunt rekenen.",
+            })}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3.5">
@@ -47,7 +60,7 @@ export default function Hero() {
               href="#booking"
               className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-[15.5px] font-semibold text-white no-underline transition-colors hover:bg-brand/90"
             >
-              Request a Quote
+              {t({ en: "Request a Quote", nl: "Vraag een offerte aan" })}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m13 6 6 6-6 6" />
@@ -57,7 +70,7 @@ export default function Hero() {
               href="#booking"
               className="inline-flex items-center gap-2 rounded-full border border-brand/[.22] px-7.5 py-4 text-[15.5px] font-semibold text-ink no-underline transition-colors hover:bg-brand/4"
             >
-              Book an Appointment
+              {t({ en: "Book an Appointment", nl: "Maak een afspraak" })}
             </a>
           </div>
 
@@ -67,11 +80,16 @@ export default function Hero() {
                 <path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z" />
                 <circle cx="12" cy="10" r="2.4" />
               </svg>
-              <span className="text-[14.5px] font-medium text-muted">Serving your region</span>
+              <span className="text-[14.5px] font-medium text-muted">
+                {t({ en: "Serving your region", nl: "Actief in uw regio" })}
+              </span>
             </div>
             <div className="h-5.5 w-px bg-brand/[.12]" />
             <div className="text-[14.5px] font-medium text-muted">
-              Reliable · Flexible · Professional
+              {t({
+                en: "Reliable · Flexible · Professional",
+                nl: "Betrouwbaar · Flexibel · Professioneel",
+              })}
             </div>
           </div>
         </div>

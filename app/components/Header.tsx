@@ -1,3 +1,5 @@
+import LanguageToggle from "@/app/i18n/LanguageToggle";
+
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
@@ -37,12 +39,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href="#booking"
-          className="hidden items-center gap-2 rounded-full bg-brand px-6 py-3 text-[14.5px] font-semibold text-white no-underline transition-colors hover:bg-brand/90 sm:inline-flex"
-        >
-          Request a Quote
-        </a>
+        <div className="flex items-center gap-3">
+          <LanguageToggle />
+          <a
+            href="#booking"
+            className="hidden items-center gap-2 rounded-full bg-brand px-6 py-3 text-[14.5px] font-semibold text-white no-underline transition-colors hover:bg-brand/90 sm:inline-flex"
+          >
+            Request a Quote
+          </a>
+        </div>
       </div>
     </header>
   );
